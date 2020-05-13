@@ -25,7 +25,9 @@ class GamesList extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://starlord.hackerearth.com/gamesarena")
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://starlord.hackerearth.com/gamesarena"
+    )
       .then((res) => res.json())
       .then((data) => {
         this.setState({ dataLoaded: true });
