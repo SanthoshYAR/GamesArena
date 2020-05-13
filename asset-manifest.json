@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/GamesArena/static/js/main.37b14c78.chunk.js",
-    "main.js.map": "/GamesArena/static/js/main.37b14c78.chunk.js.map",
+    "main.js": "/GamesArena/static/js/main.3e765cb7.chunk.js",
+    "main.js.map": "/GamesArena/static/js/main.3e765cb7.chunk.js.map",
     "runtime-main.js": "/GamesArena/static/js/runtime-main.4db9aa2a.js",
     "runtime-main.js.map": "/GamesArena/static/js/runtime-main.4db9aa2a.js.map",
-    "static/js/2.8dc7069d.chunk.js": "/GamesArena/static/js/2.8dc7069d.chunk.js",
-    "static/js/2.8dc7069d.chunk.js.map": "/GamesArena/static/js/2.8dc7069d.chunk.js.map",
+    "static/js/2.df116ee3.chunk.js": "/GamesArena/static/js/2.df116ee3.chunk.js",
+    "static/js/2.df116ee3.chunk.js.map": "/GamesArena/static/js/2.df116ee3.chunk.js.map",
     "index.html": "/GamesArena/index.html",
-    "precache-manifest.b07f251e85eef3c713bc4cf03d251f6f.js": "/GamesArena/precache-manifest.b07f251e85eef3c713bc4cf03d251f6f.js",
+    "precache-manifest.9a87e23aea34d6dadb9edb2aa5fab5c9.js": "/GamesArena/precache-manifest.9a87e23aea34d6dadb9edb2aa5fab5c9.js",
     "service-worker.js": "/GamesArena/service-worker.js",
-    "static/js/2.8dc7069d.chunk.js.LICENSE.txt": "/GamesArena/static/js/2.8dc7069d.chunk.js.LICENSE.txt",
+    "static/js/2.df116ee3.chunk.js.LICENSE.txt": "/GamesArena/static/js/2.df116ee3.chunk.js.LICENSE.txt",
     "static/media/editors-choice.jpg": "/GamesArena/static/media/editors-choice.af5e8dd5.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.4db9aa2a.js",
-    "static/js/2.8dc7069d.chunk.js",
-    "static/js/main.37b14c78.chunk.js"
+    "static/js/2.df116ee3.chunk.js",
+    "static/js/main.3e765cb7.chunk.js"
   ]
 }
