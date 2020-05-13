@@ -5,6 +5,19 @@ import SearchGames from "./SearchGames";
 import GridList from "@material-ui/core/GridList";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const TopProgressBar = ({ show }) => {
+  if (!show) return "";
+  return (
+    <div style={{ position: "relative" }}>
+      <LinearProgress />
+      <CircularProgress
+        style={{ position: "absolute", right: "50%", top: 10 }}
+      />
+    </div>
+  );
+};
 
 class GamesList extends React.Component {
   constructor(props) {
@@ -145,34 +158,29 @@ class GamesList extends React.Component {
     return (
       <div>
         <SearchGames onSort={this.sortGames} onSearch={this.searchInGames} />
-        {!dataLoaded ? (
-          <Backdrop open={!dataLoaded} style={{ color: "white" }}>
-            <CircularProgress color="white" />
-          </Backdrop>
+
+        <TopProgressBar show={!dataLoaded} />
+
+        {gamesInPage.length == 0 && dataLoaded ? (
+          <h3 style={{ display: "flex", justifyContent: "center" }}>
+            No results to display
+          </h3>
         ) : (
           <React.Fragment>
-            {gamesInPage.length == 0 ? (
-              <h3 style={{ display: "flex", justifyContent: "center" }}>
-                No results to display
-              </h3>
-            ) : (
-              <React.Fragment>
-                <GridList style={{ justifyContent: "center" }}>
-                  {gamesInPage.map((item) => (
-                    <GamesComponent item={item}></GamesComponent>
-                  ))}
-                </GridList>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Pagination
-                    count={count}
-                    color="primary"
-                    defaultPage={1}
-                    page={this.state.selectedPage}
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </React.Fragment>
-            )}
+            <GridList style={{ justifyContent: "center" }}>
+              {gamesInPage.map((item) => (
+                <GamesComponent item={item}></GamesComponent>
+              ))}
+            </GridList>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Pagination
+                count={count}
+                color="primary"
+                defaultPage={1}
+                page={this.state.selectedPage}
+                onChange={this.handleChange}
+              />
+            </div>
           </React.Fragment>
         )}
       </div>
