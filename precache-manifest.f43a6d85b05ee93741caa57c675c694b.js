@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cdd8a58bb4a053a101a2e7d6a464de15",
+    "revision": "6ea5ac7981d9c4432d6de621ab55f187",
     "url": "/GamesArena/index.html"
   },
   {
