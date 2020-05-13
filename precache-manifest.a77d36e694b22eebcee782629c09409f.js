@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9872a5d5361edc83d62a6987bacf2285",
+    "revision": "dc45a4ae4aae38253caf9355718bba64",
     "url": "/GamesArena/index.html"
   },
   {
-    "revision": "a97ec8e9e903367c1162",
+    "revision": "92919064fd3efb4d1db1",
     "url": "/GamesArena/static/css/main.b9781f1e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GamesArena/static/js/2.c284362f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a97ec8e9e903367c1162",
-    "url": "/GamesArena/static/js/main.f5accdb7.chunk.js"
+    "revision": "92919064fd3efb4d1db1",
+    "url": "/GamesArena/static/js/main.24a1db04.chunk.js"
   },
   {
     "revision": "e8457b6a7c31c60b1459",
