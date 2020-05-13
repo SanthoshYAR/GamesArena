@@ -1,11 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import logo from "./images/editors-choice.jpg";
 import Rating from "@material-ui/lab/Rating";
+import { makeStyles } from "@material-ui/core/styles";
 
 function GamesComponent(props) {
   const useStyles = makeStyles({
@@ -13,6 +13,7 @@ function GamesComponent(props) {
       width: 450,
       margin: 20,
     },
+    rating: { display: "flex", alignItems: "center" },
   });
   const classes = useStyles();
   let image;
@@ -48,7 +49,7 @@ function GamesComponent(props) {
         <Typography variant="h5" gutterBottom>
           Genre: {props.item.genre}
         </Typography>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className={classes.rating}>
           <Rating
             name="read-only"
             value={props.item.score / 2}

@@ -4,14 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Input from "@material-ui/core/Input";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
+import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import SortIcon from "@material-ui/icons/Sort";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
-
     marginLeft: 5,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -51,19 +47,26 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: "inherit",
   },
-  inputInput: {
+  input: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     width: "100%",
   },
-  menuBtn: {
+  menuOpt: {
     padding: theme.spacing(0, 16, 0, 0),
+  },
+  select: {
+    paddingRight: "10px",
   },
 }));
 
 export default function SearchGames(props) {
   const classes = useStyles();
-  let [inputString, setVal] = React.useState("");
+  const [inputString, setVal] = React.useState("");
+  const [sortBy, setMenuVal] = React.useState("None");
+
+  const ASC = "RatingsASC";
+  const DSC = "RatingsDSC";
+  const None = "None";
 
   const search = (event, target) => {
     //setVal(event.target.value);
@@ -76,30 +79,17 @@ export default function SearchGames(props) {
     }
   };
 
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
     setVal(event.target.value);
   };
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    console.log(event.currentTarget);
+  const handleMenuChange = (event) => {
+    setMenuVal(event.target.value);
+    console.log(event.target.value);
+    props.onSort(event.target.value);
+    //console.log(sortBy);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const onMenuClick = (event, index) => {
-    console.log(event.currentTarget);
-    setSelectedIndex(index);
-    console.log(index);
-    handleClose();
-  };
-
-  const ASC = "RatingsASC";
-  const DSC = "RatingsDSC";
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -107,33 +97,24 @@ export default function SearchGames(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             Games Arena
           </Typography>
-          <Button
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-            className={classes.menuBtn}
-          >
-            <SortIcon /> Sort
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem key={ASC} selected={selectedIndex} onClick={onMenuClick}>
-              Sort by Rating ASC
-            </MenuItem>
-            <MenuItem key={DSC} selected={selectedIndex} onClick={onMenuClick}>
-              Sort by Rating DSC
-            </MenuItem>
-          </Menu>
+          <span className={classes.menuOpt}>
+            <InputLabel>Sort by Ratings</InputLabel>
+            <Select
+              className={classes.select}
+              value={sortBy}
+              onChange={handleMenuChange}
+            >
+              <MenuItem value={None}>None</MenuItem>
+              <MenuItem value={ASC}>Rating ASC</MenuItem>
+              <MenuItem value={DSC}>Rating DSC</MenuItem>
+            </Select>
+          </span>
+
           <div className={classes.search}>
             <Input
               value={inputString}
               placeholder="Search…"
-              onChange={handleChange}
+              onChange={handleInputChange}
               onKeyDown={onEnter}
               startAdornment={
                 <IconButton onClick={search}>
@@ -141,10 +122,7 @@ export default function SearchGames(props) {
                   <SearchIcon />
                 </IconButton>
               }
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
+              classeName={classes.input}
               inputProps={{
                 "aria-label": "search",
               }}
